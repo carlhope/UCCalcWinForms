@@ -18,11 +18,17 @@ namespace UCCalcWinForms
         private static decimal supportRate=390.06M;
         private static decimal totalBaseRate = 0M;
         private static decimal taperRate=0.55M;
+        private static bool workallowanceEligibility = false;
         private static decimal rentingWorkAllowance = 379M;
         private static decimal homeownerWorkAllowance = 631M;
+        private static decimal firstChild = 315M-additionalChildren;//born before 6 april 2017, else additionalChildren rate applies.
+        private static DateTime firstchildpremiumcutoff = new DateTime(2017, 4, 6);
+        private static decimal additionalChildren = 269.58M; //max 2 children. this app wont deal with exceptions.
+        private static decimal disabledChild = 146.31M;//add these later
+        private static decimal severeDisabledChild = 456.89M;//add these later
         
 
-        public static decimal CalcUC( decimal netMonthlyIncome, decimal housing, bool WRAG, bool supportGroup, bool isOver18, bool isCouple)
+        public static decimal CalcUC( decimal netMonthlyIncome, decimal housing, bool WRAG, bool supportGroup, bool isOver18, bool isCouple, List<person> childrens)
         {
             //calculate baserate
             totalBaseRate = 0;
@@ -33,14 +39,35 @@ namespace UCCalcWinForms
                 totalBaseRate += (isOver18) ? o18CoupleRate : u18CoupleRate 
                 : 
                 totalBaseRate += (isOver18) ? o18SingleRate : u18SingleRate;
-
+            //calculate if eligible for work allowance
+            if (WRAG|supportGroup|childrens.Count>0) { workallowanceEligibility = true; }
+            
             //calculate work allowance
             bool rentDue = false;
             if (housing>0) { rentDue = true; }
             decimal workAllowance = (rentDue) ? rentingWorkAllowance : homeownerWorkAllowance;
+            if (!workallowanceEligibility) { workAllowance = 0; }
+
+            //calculate child elements
+            int count = childrens.Count;
+            bool firstchildpremiumtrue = false;
+            switch (count)
+            {
+                case 0: totalBaseRate += 0;break;
+                case 1: totalBaseRate += additionalChildren; break;
+                default: totalBaseRate += 2 * additionalChildren; break;
+            }
+
+            foreach (person person in childrens)
+            {
+                if (person.dateOfBirth < firstchildpremiumcutoff) { firstchildpremiumtrue=true; break; }
+               
+            }
+
+            if (firstchildpremiumtrue) { totalBaseRate += firstChild; }
 
             //calculate amount payable after deductions for earnings
-            decimal UCPayable = (totalBaseRate - (netMonthlyIncome * taperRate));
+            decimal UCPayable = (totalBaseRate - ((netMonthlyIncome-workAllowance) * taperRate));
             UCPayable = (UCPayable < 0) ? 0 : UCPayable;
             
             return UCPayable;

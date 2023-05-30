@@ -1,1 +1,4 @@
 # UCCalcWinForms
+A personal project that calculates Universal Credit entitlement. this makes it easier to see how a change of circumstances such as income change, or additional child would impact Universal Credit and overall income. I had created a spreadsheet version of this, and felt itd make a good candidate for conversion to an application, providing me with practice and demonstration of ability to read data from a form, perform calculations, and return result to the user. Calculations are largely arithmetic, but also include a number of if else statements.
+
+whilst i believe these calculations to be accurate, no guarantees are given. Anyone using this code, should complete their own unit tests to verify accuracy of results. Some Universal Credit exceptions and less common scenarios are not currently handled by this calculation. for example, Impact of twins on two child limit.

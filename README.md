@@ -5,7 +5,9 @@ these results are not perfect and can return the wrong result due to not taking 
 
 doesnt take into account local housing rates. will assume that universal credit will always pay rent in full. this is not true. fixing this would require local housing rate data that i dont possess.
 
-doesnt take into account exceptions to two child limit. would add unneccessary complication to form for an application that isnt intended for real world use.
+doesnt take into account exceptions to two child limit. calculation capped at two children. this application is for practice only, and researching exceptions, would take me away from that practicing.
+
+doesnt take into account childcare.
 
 others issues likely exist.
 

@@ -27,8 +27,8 @@ namespace UCCalcWinForms.Tests
         {
             List<Children> kids = new List<Children>();
             kids.Add(new Children("Josh", new DateTime(2009,1,1)));
-            decimal result = UCCalculation.CalcUC(1000M, 400M, true, true, false, true, kids);
-            Assert.AreEqual(1222.02M, result);
+            decimal result = UCCalculation.CalcUC(1000M, 400M, true, false, true, false, kids);
+            Assert.AreEqual(888.5M, result);
         }
     }
 }

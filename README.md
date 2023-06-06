@@ -9,6 +9,10 @@ doesnt take into account exceptions to two child limit. calculation capped at tw
 
 doesnt take into account childcare.
 
+doesnt take into account disabled children.
+
 others issues likely exist.
+
+some of these limitations may represent future areas of improvement.
 
 this project has been developed for my own learning. It should be assumed that i may have made mistakes. Results may be inaccurate. This should not be used for real world Universal Credit claims.

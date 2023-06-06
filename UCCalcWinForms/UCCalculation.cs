@@ -21,7 +21,7 @@ namespace UCCalcWinForms
         private static bool workallowanceEligibility = false;
         private static decimal rentingWorkAllowance = 379M;
         private static decimal homeownerWorkAllowance = 631M;
-        private static decimal firstChild = 315M-additionalChildren;//born before 6 april 2017, else additionalChildren rate applies.
+        private static decimal firstChild = 45.42M;//born before 6 april 2017, else additionalChildren rate applies.
         private static DateTime firstchildpremiumcutoff = new DateTime(2017, 4, 6);
         private static decimal additionalChildren = 269.58M; //max 2 children. this app wont deal with exceptions.
         private static decimal disabledChild = 146.31M;//add these later
@@ -36,12 +36,7 @@ namespace UCCalcWinForms
             totalBaseRate += (WRAG && !supportGroup) ? wragRate : 0M;
             totalBaseRate += (supportGroup) ? supportRate : 0M;
            
-            
-           /* totalBaseRate = (isCouple) ? 
-                totalBaseRate += (isOver18) ? o18CoupleRate : u18CoupleRate 
-                : 
-                totalBaseRate += (isOver18) ? o18SingleRate : u18SingleRate;
-           */
+           //calc rates based on relationship status and age
            if (!isCouple&&!isOver18) { totalBaseRate += u18SingleRate; }
            else if (!isCouple && isOver18) { totalBaseRate += o18SingleRate; }
            else if(isCouple && !isOver18) { totalBaseRate += u18CoupleRate; }

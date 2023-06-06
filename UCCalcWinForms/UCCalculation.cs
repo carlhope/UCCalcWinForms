@@ -24,8 +24,6 @@ namespace UCCalcWinForms
         private static decimal firstChild = 45.42M;//born before 6 april 2017, else additionalChildren rate applies.
         private static DateTime firstchildpremiumcutoff = new DateTime(2017, 4, 6);
         private static decimal additionalChildren = 269.58M; //max 2 children. this app wont deal with exceptions.
-        private static decimal disabledChild = 146.31M;//add these later
-        private static decimal severeDisabledChild = 456.89M;//add these later
         
 
         public static decimal CalcUC( decimal netMonthlyIncome, decimal housing, bool WRAG, bool supportGroup, bool isOver18, bool isCouple, List<Children> childrens)
@@ -40,7 +38,7 @@ namespace UCCalcWinForms
            if (!isCouple&&!isOver18) { totalBaseRate += u18SingleRate; }
            else if (!isCouple && isOver18) { totalBaseRate += o18SingleRate; }
            else if(isCouple && !isOver18) { totalBaseRate += u18CoupleRate; }
-           else totalBaseRate += u18CoupleRate;
+           else totalBaseRate += o18CoupleRate;
             
             
             

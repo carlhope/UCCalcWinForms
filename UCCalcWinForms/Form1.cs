@@ -28,6 +28,12 @@ namespace UCCalcWinForms
                 textBox1.AppendText("you have a salary of " + salary);
                 textBox1.AppendText(Environment.NewLine);
                 textBox1.AppendText(" this gives you a total income of " + totalIncome);
+                textBox1.AppendText(Environment.NewLine);
+                textBox1.AppendText(Environment.NewLine);
+                textBox1.AppendText(Environment.NewLine);
+                textBox1.AppendText("This application is a personal project for practice only. Results may be inaccurate");
+                textBox1.AppendText(Environment.NewLine);
+                textBox1.AppendText("this application should not be used for real world Universal Credit Calculations");
             }
             else { textBox1.Text = "error, salary and/or rent not decimal"; }
         }

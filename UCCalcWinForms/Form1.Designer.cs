@@ -29,10 +29,9 @@
         private void InitializeComponent()
         {
             textBox1 = new TextBox();
-            button1 = new Button();
+            SubmitButton = new Button();
             label1 = new Label();
             label2 = new Label();
-            label7 = new Label();
             WragInput = new CheckBox();
             SupportInput = new CheckBox();
             ageInput = new CheckBox();
@@ -51,20 +50,21 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(273, 395);
+            textBox1.Location = new Point(12, 251);
+            textBox1.Multiline = true;
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(236, 23);
+            textBox1.Size = new Size(776, 167);
             textBox1.TabIndex = 0;
             // 
-            // button1
+            // SubmitButton
             // 
-            button1.Location = new Point(273, 342);
-            button1.Name = "button1";
-            button1.Size = new Size(83, 23);
-            button1.TabIndex = 1;
-            button1.Text = "Click me";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            SubmitButton.Location = new Point(298, 211);
+            SubmitButton.Name = "SubmitButton";
+            SubmitButton.Size = new Size(83, 23);
+            SubmitButton.TabIndex = 1;
+            SubmitButton.Text = "Submit";
+            SubmitButton.UseVisualStyleBackColor = true;
+            SubmitButton.Click += button1_Click;
             // 
             // label1
             // 
@@ -83,15 +83,6 @@
             label2.Size = new Size(78, 15);
             label2.TabIndex = 3;
             label2.Text = "Rent Amount";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(57, 403);
-            label7.Name = "label7";
-            label7.Size = new Size(109, 15);
-            label7.TabIndex = 8;
-            label7.Text = "UC Eligible amount";
             // 
             // WragInput
             // 
@@ -239,10 +230,9 @@
             Controls.Add(ageInput);
             Controls.Add(SupportInput);
             Controls.Add(WragInput);
-            Controls.Add(label7);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(button1);
+            Controls.Add(SubmitButton);
             Controls.Add(textBox1);
             Name = "Form1";
             Text = "Form1";
@@ -253,10 +243,9 @@
         #endregion
 
         private TextBox textBox1;
-        private Button button1;
+        private Button SubmitButton;
         private Label label1;
         private Label label2;
-        private Label label7;
         private CheckBox WragInput;
         private CheckBox SupportInput;
         private CheckBox ageInput;

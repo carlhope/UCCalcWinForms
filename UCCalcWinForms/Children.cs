@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace UCCalcWinForms
 {
-    public class person
+    public class Children
     {
         public string name;
         public DateTime dateOfBirth;
 
-        public person(string Name, DateTime Dob) {
+        public Children(string Name, DateTime Dob) {
             this.name = Name;
             this.dateOfBirth = Dob;
         

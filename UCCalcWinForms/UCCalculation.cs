@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace UCCalcWinForms
 {
-    public static class Class1
+    public static class UCCalculation
     {
 
         private static decimal u18SingleRate = 292.11M;
@@ -28,17 +28,27 @@ namespace UCCalcWinForms
         private static decimal severeDisabledChild = 456.89M;//add these later
         
 
-        public static decimal CalcUC( decimal netMonthlyIncome, decimal housing, bool WRAG, bool supportGroup, bool isOver18, bool isCouple, List<person> childrens)
+        public static decimal CalcUC( decimal netMonthlyIncome, decimal housing, bool WRAG, bool supportGroup, bool isOver18, bool isCouple, List<Children> childrens)
         {
             //calculate baserate
             totalBaseRate = 0;
             totalBaseRate += housing;
             totalBaseRate += (WRAG && !supportGroup) ? wragRate : 0M;
             totalBaseRate += (supportGroup) ? supportRate : 0M;
-            totalBaseRate = (isCouple) ? 
+           
+            
+           /* totalBaseRate = (isCouple) ? 
                 totalBaseRate += (isOver18) ? o18CoupleRate : u18CoupleRate 
                 : 
                 totalBaseRate += (isOver18) ? o18SingleRate : u18SingleRate;
+           */
+           if (!isCouple&&!isOver18) { totalBaseRate += u18SingleRate; }
+           else if (!isCouple && isOver18) { totalBaseRate += o18SingleRate; }
+           else if(isCouple && !isOver18) { totalBaseRate += u18CoupleRate; }
+           else totalBaseRate += u18CoupleRate;
+            
+            
+            
             //calculate if eligible for work allowance
             if (WRAG|supportGroup|childrens.Count>0) { workallowanceEligibility = true; }
             
@@ -58,9 +68,9 @@ namespace UCCalcWinForms
                 default: totalBaseRate += 2 * additionalChildren; break;
             }
 
-            foreach (person person in childrens)
+            foreach (Children Child in childrens)
             {
-                if (person.dateOfBirth < firstchildpremiumcutoff) { firstchildpremiumtrue=true; break; }
+                if (Child.dateOfBirth < firstchildpremiumcutoff) { firstchildpremiumtrue=true; break; }
                
             }
 

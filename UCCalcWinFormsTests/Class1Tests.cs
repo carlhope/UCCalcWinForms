@@ -14,16 +14,20 @@ namespace UCCalcWinForms.Tests
         [TestMethod()]
         public void CalcUCTest()
         {
-            Class1 dave = new Class1();
-            decimal result = dave.CalcUC(1000M, 400M, true, true, false, true, false);
+            List<Children> kids = new List<Children>();
+            kids.Add(new Children("Luke", new DateTime(2019, 1, 1)));
+            kids.Add(new Children("Lola", new DateTime(2020, 1, 1)));
+            kids.Add(new Children("Amelia", new DateTime(2022, 1, 1)));
+            decimal result = UCCalculation.CalcUC(1000M, 400M, true, true, false, true, kids);
             Assert.AreEqual(365.05M, result);
         }
 
         [TestMethod()]
         public void CalcUCTests()
         {
-            Class1 dave = new Class1();
-            decimal result = dave.CalcUC(1000M, 400M, true, true, false, true, false);
+            List<Children> kids = new List<Children>();
+            kids.Add(new Children("Josh", new DateTime(2009,1,1)));
+            decimal result = UCCalculation.CalcUC(1000M, 400M, true, true, false, true, kids);
             Assert.AreEqual(565.05M, result);
         }
     }

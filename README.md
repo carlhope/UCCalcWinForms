@@ -3,7 +3,7 @@ A personal project that calculates Universal Credit entitlement. this makes it e
 
 these results are not perfect and can return the wrong result due to not taking into account all factors. The benefits system is complex and unrealistic for me to account for every factor in a small personal project. some areas where an incorrect result will be produced are:-
 
-doesnt take into account local housing rates. will assume that universal credit will pay rent in full. this is not true. fixing this would require local housing rate data that i dont possess.
+doesnt take into account local housing rates. will assume that universal credit will always pay rent in full. this is not true. fixing this would require local housing rate data that i dont possess.
 
 doesnt take into account exceptions to two child limit. would add unneccessary complication to form for an application that isnt intended for real world use.
 

@@ -5,7 +5,7 @@ namespace UCCalcWinForms
     [DebuggerDisplay($@"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
     public partial class Form1 : Form
     {
-        List<Children> children = new List<Children>();
+        List<Children> childrenList = new List<Children>();
         public Form1()
         {
             InitializeComponent();
@@ -21,7 +21,7 @@ namespace UCCalcWinForms
             rentResult = decimal.TryParse(RentInput.Text, out rent);
             if (salaryResult == true && rentResult == true)
             {
-                var UC = UCCalculation.CalcUC(salary, rent, WragInput.Checked, SupportInput.Checked, ageInput.Checked, coupleInput.Checked, children);
+                var UC = UCCalculation.CalcUC(salary, rent, WragInput.Checked, SupportInput.Checked, ageInput.Checked, coupleInput.Checked, childrenList);
                 var totalIncome = UC + salary;
                 textBox1.Text = " your UC is " + UC.ToString();
                 textBox1.AppendText(Environment.NewLine);
@@ -46,11 +46,11 @@ namespace UCCalcWinForms
         private void AddChildButton_Click(object sender, EventArgs e)
         {
             var child = new Children(childName.Text, DOBPicker.Value);
-            children.Add(child);
+            childrenList.Add(child);
             textBox1.Text = (child.dateOfBirth.ToString("MM/dd/yyyy"));
             childName.Text = "";
             DOBPicker.Value = DateTime.Now;
-            var childrenCount = children.Count;
+            var childrenCount = childrenList.Count;
             ChildrenAddedLabel.Text = childrenCount.ToString() + "children added";
         }
 

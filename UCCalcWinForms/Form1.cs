@@ -22,12 +22,12 @@ namespace UCCalcWinForms
             if (salaryResult == true && rentResult == true)
             {
                 var UC = UCCalculation.CalcUC(salary, rent, WragInput.Checked, SupportInput.Checked, ageInput.Checked, coupleInput.Checked, childrenList);
-                var totalIncome = UC + salary;
-                textBox1.Text = " your UC is " + UC.ToString();
+                decimal totalIncome = UC + salary;
+                textBox1.Text = " your UC is " + UC.ToString("0.00");
                 textBox1.AppendText(Environment.NewLine);
-                textBox1.AppendText("you have a salary of " + salary);
+                textBox1.AppendText("you have a salary of " + salary.ToString("0.00"));
                 textBox1.AppendText(Environment.NewLine);
-                textBox1.AppendText(" this gives you a total income of " + totalIncome);
+                textBox1.AppendText(" this gives you a total income of " + totalIncome.ToString("0.00"));
                 textBox1.AppendText(Environment.NewLine);
                 textBox1.AppendText(Environment.NewLine);
                 textBox1.AppendText(Environment.NewLine);
